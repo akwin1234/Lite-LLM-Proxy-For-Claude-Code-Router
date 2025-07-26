@@ -2,8 +2,8 @@ model_list:
   - model_name: claude-sonnet-4
     litellm_params:
       model: vertex_ai/claude-sonnet-4@20250514
-      vertex_project: "ringed-dispatch-466912-m4"
+      vertex_project: "ringed-dispatch-111111-m4"
       vertex_location: "us-east5"
-      vertex_credentials: "C:/Users/akash/AppData/Roaming/gcloud/application_default_credentials.json"
+      vertex_credentials: "C:/Users/user/AppData/Roaming/gcloud/application_default_credentials.json"
 router_settings:
   default_model: claude-sonnet-4
