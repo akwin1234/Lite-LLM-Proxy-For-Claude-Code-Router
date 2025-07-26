@@ -3,7 +3,7 @@
     {
       "name": "openrouter",
       "api_base_url": "http://localhost:8000/v1/chat/completions",
-      "api_key": "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",
+      "api_key": "sk-or-random",
       "models": ["gemini-2.5-pro"],
       "transformer": {
         "use": ["openrouter"]
