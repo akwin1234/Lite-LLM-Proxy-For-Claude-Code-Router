@@ -1,6 +1,6 @@
 # LiteLLM Proxy for Google Vertex AI
 
-##EDIT: Sorry for absurd file paths, you will need to fix them in all files, which is easy task still sorry. This project was vibe coded by gemini-cli
+EDIT: Sorry for absurd file paths, you will need to fix them in all files, which is easy task still sorry. This project was vibe coded by gemini-cli
 
 This project provides a simple way to set up a LiteLLM proxy for Google Vertex AI, allowing you to use OpenAI-style endpoints for models like Gemini 2.5 Pro and Claude Sonnet 4.
 
