@@ -1,0 +1,69 @@
+Here’s a prompt you can give to a developer (or put in your issue/PR) to set up **LiteLLM Proxy for Google Vertex AI**, specifically targeting **Gemini‑2.5‑pro**:
+
+````yaml
+# Prompt for an LLM‑knowledgeable developer:
+
+"Please configure LiteLLM Proxy to support OpenAI‑style endpoint routing to Google Vertex AI's `gemini‑2.5‑pro` model. The goal is to enable usage like:
+
+  curl -X POST http://localhost:4000/v1/chat/completions \
+    -H 'Authorization: Bearer $LITELLM_KEY' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      \"model\": \"gemini‑2.5‑pro\",
+      \"messages\": [{\"role\": \"user\", \"content\": \"Explain the theory of relativity.\"}],
+      \"thinking\": {\"type\": \"enabled\", \"budget_tokens\": 1024}
+    }'
+
+### Steps to include
+
+1. **Install LiteLLM & launch proxy:**
+```bash
+pip install 'litellm[proxy]'
+litellm --config path/to/proxy_config.yaml
+````
+
+2. **proxy\_config.yaml** should include:
+
+```yaml
+model_list:
+  - model_name: gemini‑2.5‑pro
+    litellm_params:
+      model: vertex_ai/gemini‑2.5‑pro
+      vertex_project: \"<YOUR_GCP_PROJECT_ID>\"
+      vertex_location: \"us‑central1\"
+      vertex_credentials: \"/path/to/service_account.json\"  # or rely on ADC in GKE/Cloud Run
+router_settings:
+  default_model: gemini‑2.5‑pro
+```
+
+3. **Support thinking parameter** — confirm proxy passes `thinking` to Vertex AI per LiteLLM docs .
+
+4. **Expose OpenAI-style REST endpoints**, ensuring `/v1/chat/completions` supports streaming, cost tracking, logging, rate‑limiting, etc.
+
+5. **Test locally and optionally via gemini‑cli integration:**
+
+```bash
+curl … -d '{ "model": "gemini‑2.5‑pro", "messages":[…], "thinking":{…} }'
+```
+
+or use gemini‑cli with:
+
+```bash
+export GOOGLE_GEMINI_BASE_URL="http://localhost:4000"
+export GEMINI_API_KEY="$LITELLM_KEY"
+gemini chat --model gemini‑2.5‑pro
+```
+
+based on the LiteLLM gemini-cli tutorial ."
+
+---
+
+### ✅ Why it works
+
+* LiteLLM supports Vertex AI models via `vertex_ai/<model-name>` configured in `model_list` .
+* It accepts `thinking` parameters (passed through to Gemini) to enable “thinking” tokens .
+* Gemini‑CLI support allows easy end-to-end testing through the same proxy .
+
+---
+
+You can share this prompt directly in GitHub discussions or with your developer team. Want me to refine for Docker deployment, Cloud Run, or CI/CD? Just say the word!

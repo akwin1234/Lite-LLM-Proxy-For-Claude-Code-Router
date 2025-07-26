@@ -1,0 +1,3 @@
+@echo off
+echo Starting Gemini 2.5 Pro Proxy...
+python C:\Users\akash\Downloads\litellm\run_proxy.py

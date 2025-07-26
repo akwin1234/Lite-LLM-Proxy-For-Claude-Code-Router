@@ -1,0 +1,3 @@
+@echo off
+echo Starting Claude Sonnet 4 Proxy...
+python C:\Users\akash\Downloads\litellm\run_proxy.py C:\Users\akash\Downloads\litellm\proxy_config.sonnet.yaml
