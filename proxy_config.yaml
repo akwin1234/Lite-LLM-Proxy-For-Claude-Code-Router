@@ -2,8 +2,8 @@ model_list:
   - model_name: gemini-2.5-pro
     litellm_params:
       model: vertex_ai/gemini-2.5-pro
-      vertex_project: "gen-lang-client-0141641311"
+      vertex_project: "gen-lang-client-1111"
       vertex_location: "global"
-      vertex_credentials: "C:/Users/akash/AppData/Roaming/gcloud/application_default_credentials.json"
+      vertex_credentials: "C:/Users/user/AppData/Roaming/gcloud/application_default_credentials.json"
 router_settings:
   default_model: gemini-2.5-pro
