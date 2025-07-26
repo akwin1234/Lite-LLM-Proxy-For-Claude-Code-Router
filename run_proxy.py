@@ -12,7 +12,7 @@ if len(sys.argv) > 1:
     config_path = sys.argv[1]
 else:
     # Default config file path
-    config_path = "C:/Users/akash/Downloads/litellm/proxy_config.yaml"
+    config_path = "C:/Users/user/Downloads/litellm/proxy_config.yaml"
 
 # Run the async initialization
 logging.info(f"Initializing proxy with config: {config_path}")
